@@ -2,6 +2,14 @@
 
 This doc aims to document how to access all values exposed to end users in the Uniswap v3 interface. The assumption is that users are interacting with `web3.py` but this should work for all other related libraries. This document assumes basic understand of ETH contract interaction.
 
+## Relevant links
+
+[Positions](https://github.com/Uniswap/uniswap-v3-sdk/blob/main/src/entities/position.ts) - script used to calculatevalues shown to end users
+
+ 
+
+
+
 ## Main contracts
 
 | Contract name                | Address                                      | ABI                                                          |
@@ -30,7 +38,7 @@ The NFT ID is the same as the one displayed in your uniswap interace.
 | ----------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **a.** Liquidity                          | `positions(nft_id)` in `UniswapV3Factory` will return a liquidity value. | **TODO**: Need to figure out how to represent the liquidity as on of the token pairs. |
 | **a1, a2.** token liquidity               | **TODO**                                                     |                                                              |
-| **b1, b2.** token fees                    | **TODO**: figure out web3.py way of doing static calls       | calling `collect` statically seems to be an option to get these values but there seems to be no `web3.py` way of doing this |
+| **b1, b2.** token fees                    | **TODO**: figure out web3.py way of doing static calls. [this part may help](https://github.com/Uniswap/uniswap-interface/blob/6c880d29a64a497c61202a089243aeb2e544af2c/src/hooks/useV3PositionFees.ts#L18). Collected fees can just be calculated by filtering on collect events for the NFT ID. | calling `collect` statically seems to be an option to get these values but there seems to be no `web3.py` way of doing this |
 | **c1, c2**. Range                         | This is done by getting the upper and lower tick part of the `positions(nft_id)` call. | **TODO**: convert tick ranges to token value ranges          |
 | Token addresses                           | `positions(nft_id)` in `UniswapV3Factory` will return the addresses of `token0` and `token1`. | These addresses are used later to get the pool address.      |
 | Position fee                              | `positions(nft_id)` in `UniswapV3Factory` will return the fee. | `10000` is the 1% fee pool, ` 3000` is the .3% fee pool, `500` the .05% pool |

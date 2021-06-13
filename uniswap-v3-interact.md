@@ -4,6 +4,8 @@ This doc aims to document how to access all values exposed to end users in the U
 
 ## Relevant links
 
+[V3 whitepaper](https://uniswap.org/whitepaper-v3.pdf)
+
 [Positions](https://github.com/Uniswap/uniswap-v3-sdk/blob/main/src/entities/position.ts) - script used to calculatevalues shown to end users
 
  
